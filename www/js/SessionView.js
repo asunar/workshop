@@ -41,10 +41,10 @@ this.addToCalendar = function() {
         };
         window.plugins.calendar.createEvent(session.title, session.room, session.description, startDate, endDate,
             function(){alert(session.title + " has been added to your calendar.");}, function (error) {
-                console.log("Calendar fail " + error);
+                alert("Calendar fail " + error);
             });
     }
-    else console.log("Calendar plugin not found");
+    else alert("Calendar plugin not found");
 }	
 
       this.initialize();
