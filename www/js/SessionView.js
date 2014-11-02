@@ -4,6 +4,7 @@
           this.$el = $('<div/>');
 					this.$el.on('click', '.add-location-btn', this.addLocation);
 					this.$el.on('click', '.addBtn', this.addToCalendar);
+					this.$el.on('click', '.shareBtn', this.share);
       };
 
       this.render = function() {
@@ -45,7 +46,21 @@ this.addToCalendar = function() {
             });
     }
     else alert("Calendar plugin not found");
-}	
+};
+
+this.share = function() {
+  if (window.plugins.socialsharing) {
+      window.plugins.socialsharing.share("I'll be attending the session: " + session.title + ".",
+          'PhoneGap Day 2014', null, "http://pgday.phonegap.com/us2014",
+          function () {
+              console.log("Success")
+          },
+          function (error) {
+              console.log("Share fail " + error)
+          });
+  }
+  else console.log("Share plugin not found");
+}
 
       this.initialize();
   }
